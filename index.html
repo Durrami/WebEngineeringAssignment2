@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App with Chatbot</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            height: 100%;
+        }
+        .sidebar {
+            width: 20%;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .sidebar h2, .sidebar button {
+            color: white;
+            text-align: left;
+            border: none;
+            background: none;
+            font-size: 18px;
+        }
+        .main-content {
+            width: 80%;
+            padding: 20px;
+        }
+        .weather-widget {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            display: none;
+        }
+        #loadingSpinner {
+            display: none;
+            font-size: 1.5rem;
+            margin: 20px;
+        }
+        .chart-container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        .flex-row {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 20px;
+        }
+        .flex-row > .chart-container {
+            width: 30%;
+        }
+        .chat-section {
+            margin-top: 40px;
+            background: #ecf0f1;
+            padding: 20px;
+        }
+        #chatbot-response {
+            margin-top: 20px;
+            color: #333;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+    </style> -->
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div>
+                <h2>Weather App</h2>
+                <button id="dashboard-button" onclick="location.href='index.html'">Dashboard</button>
+                <button id="tables-button" onclick="location.href='index.html'">Tables</button>
+            </div>
+            <div>
+                <h2>Chatbot</h2>
+                <input type="text" id="user-query" placeholder="Ask anything...">
+                <button id="ask-chatbot">Ask</button>
+                <p id="chatbotResponse"></p>
+            </div>
+        </div>
+        <div class="main-content">
+            <h1>Weather App with Gemini Chatbot</h1>
+            
+            <!-- City input and buttons -->
+            <input type="text" id="city-name" placeholder="Enter city name">
+            <button id="get-weather">Get Weather</button>
+            <button id="toggleUnit">Toggle Celsius/Fahrenheit</button>
+
+            <!-- Loading Spinner -->
+            <div id="loadingSpinner">Loading...</div>
+
+            <!-- Weather widget to display current weather -->
+            <div class="weather-widget" id="weatherDetails"></div>
+
+            <!-- Forecast Table -->
+             <br>
+            <h2>5-Day Weather Forecast</h2>
+            <br>
+            <table id="forecastTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Temperature</th>
+                        <th>Conditions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <!-- Pagination buttons -->
+            <button id="prevPage">Previous Page</button>
+            <button id="nextPage">Next Page</button>
+
+            <!-- Charts -->
+            <div class="flex-row">
+                <div class="chart-container">
+                    <canvas id="tempBarChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="weatherDoughnutChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="tempLineChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JS script inclusion -->
+    <script src="script.js"></script>
+</body>
+</html>
